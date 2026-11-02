@@ -3,91 +3,89 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YourStartup</title>
-  <meta name="description" content="A student startup prototype for BSAD 281.">
+  <title>Tend | Plant care, made calmer</title>
+  <meta name="description" content="Keep your plants thriving with a simple, prioritized watering routine.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <!-- =========================================================
-       HEADER: logo text + navigation.
-       Each link points to a "view" further down the page (#home, #explore, #about).
-       ========================================================= -->
   <header class="site-header">
-    <a class="brand" href="#home" id="brand-name">YourStartup</a>
-    <nav aria-label="Main">
-      <a href="#home">Home</a>
-      <a href="#explore">Explore</a>
-      <a href="#about">About</a>
+    <a class="brand" href="#garden" aria-label="Tend home"><span class="brand-mark" aria-hidden="true">t</span>Tend</a>
+    <nav aria-label="Main navigation">
+      <a href="#garden">My garden</a>
+      <a href="#sitters">Plant sitters</a>
+      <a href="#plans">Plans</a>
     </nav>
+    <span class="profile-mark" aria-label="Your garden">G</span>
   </header>
 
   <main>
-
-    <!-- =======================================================
-         VIEW 1: HOME — what you do, for whom, and why it matters.
-         ======================================================= -->
-    <section id="home" data-view>
-      <div class="hero">
-        <p class="eyebrow">Prototype</p>
-        <h1 id="tagline">One sentence that says what your startup does.</h1>
-        <p class="lead" id="pitch">
-          Who is your customer, what problem do they have, and why is your
-          solution better than what they use today?
-        </p>
-        <a class="button" href="#explore">See it in action</a>
+    <section id="garden" data-view>
+      <div class="garden-heading">
+        <div>
+          <p class="eyebrow" id="today-label">YOUR INDOOR GARDEN</p>
+          <h1>Good care grows here.</h1>
+          <p class="intro">A clear little plan for keeping every leaf happy.</p>
+        </div>
+        <button class="button primary" type="button" id="show-add-form"><span aria-hidden="true">+</span> Add a plant</button>
       </div>
 
-      <div class="steps">
-        <div class="card">
-          <h2>1. Step one</h2>
-          <p>Describe the first thing a customer does.</p>
+      <section class="summary-strip" aria-label="Garden summary">
+        <div class="summary-item"><span class="summary-number" id="plant-total">0</span><span>Plants in your garden</span></div>
+        <div class="summary-item"><span class="summary-number" id="needs-water">0</span><span>Need water today</span></div>
+        <div class="summary-item"><span class="summary-number" id="coming-up">0</span><span>Due in the next 2 days</span></div>
+      </section>
+
+      <section class="form-panel" id="add-plant-panel" hidden aria-labelledby="form-title">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">NEW TO YOUR GARDEN</p><h2 id="form-title">Add a plant</h2></div>
+          <button class="icon-button" type="button" id="close-add-form" aria-label="Close form">×</button>
         </div>
-        <div class="card">
-          <h2>2. Step two</h2>
-          <p>Describe what happens next.</p>
-        </div>
-        <div class="card">
-          <h2>3. Step three</h2>
-          <p>Describe the result the customer gets.</p>
-        </div>
+        <form id="plant-form">
+          <label>Plant name<input name="name" type="text" placeholder="e.g. Fiddle-leaf fig" required maxlength="60"></label>
+          <label>Where it lives<input name="location" type="text" placeholder="e.g. Sunny window" required maxlength="60"></label>
+          <label>Water every<input name="interval" type="number" min="1" max="120" value="7" required><span class="input-suffix">days</span></label>
+          <label>Last watered<input name="lastWatered" type="date" required></label>
+          <button class="button primary" type="submit">Add to my garden</button>
+        </form>
+        <p class="form-note" id="form-feedback" aria-live="polite"></p>
+      </section>
+
+      <div class="section-heading plant-list-heading">
+        <div><p class="eyebrow">YOUR CARE QUEUE</p><h2>Watering priorities</h2></div>
+        <span class="sort-note">Most urgent first</span>
       </div>
+      <div class="plant-list" id="plant-list" aria-live="polite"></div>
+      <p class="empty-state" id="empty-garden" hidden>Your garden is ready for its first plant. Add one above to get started.</p>
+      <p class="small-note">Watering dates are helpful estimates. Check the soil and your plant's needs before watering.</p>
     </section>
 
-    <!-- =======================================================
-         VIEW 2: EXPLORE — a list built from the fake data in data.js.
-         ======================================================= -->
-    <section id="explore" data-view hidden>
-      <h1>Explore</h1>
-      <p class="muted">These examples are fake. They come from <code>data.js</code>.</p>
-
-      <label class="search">
-        <span>Search</span>
-        <input type="search" id="search-box" placeholder="Type to filter…">
-      </label>
-
-      <p class="muted" id="saved-count"></p>
-      <div class="grid" id="listing-grid"></div>
-      <p class="empty" id="empty-message" hidden>Nothing matches your search.</p>
+    <section id="sitters" data-view hidden>
+      <div class="page-intro">
+        <p class="eyebrow">CARE WHILE YOU'RE AWAY</p>
+        <h1>A little help for your plants.</h1>
+        <p>Meet the kind of local plant-care helpers Tend could connect you with. Profiles and prices below are fictional examples.</p>
+      </div>
+      <div class="sitter-list" id="sitter-list"></div>
+      <div class="notice-banner"><strong>Prototype only:</strong> sitter profiles are examples. No bookings or payments are processed.</div>
+      <p class="model-note">A future marketplace could earn a small fee from completed visits while helping sitters find nearby customers.</p>
     </section>
 
-    <!-- =======================================================
-         VIEW 3: ABOUT — your team and your story.
-         ======================================================= -->
-    <section id="about" data-view hidden>
-      <h1>About us</h1>
-      <p>Tell the story of why your team started this company.</p>
-      <p>Use first names only, or no names at all — this site is public.</p>
+    <section id="plans" data-view hidden>
+      <div class="page-intro">
+        <p class="eyebrow">A BUSINESS THAT GROWS WITH YOUR GARDEN</p>
+        <h1>Useful first. More help when you need it.</h1>
+        <p>Keep the everyday care tools free, then charge for extras that save serious plant parents time.</p>
+      </div>
+      <div class="plan-grid">
+        <article class="plan"><p class="eyebrow">THE ESSENTIALS</p><h2>Free</h2><p class="price">$0 <span>/ always</span></p><ul><li>Track your plants</li><li>Prioritized watering queue</li><li>Local reminders and care notes</li></ul><a class="button secondary" href="#garden">Go to my garden</a></article>
+        <article class="plan featured-plan"><p class="eyebrow">FOR YOUR GROWING COLLECTION</p><h2>Tend Plus</h2><p class="price">$3 <span>/ month, proposed</span></p><ul><li>Plant collection insights</li><li>Shared care with household members</li><li>Trip planning and sitter coordination</li></ul><a class="button primary" href="#sitters">Explore sitter concept</a></article>
+      </div>
+      <p class="model-note">These prices are ideas to test, not offers. A future sitter marketplace could also earn a 10–15% booking fee. No subscription or booking is available in this prototype.</p>
     </section>
-
   </main>
 
-  <!-- Keep this footer. Your site must say it is a student project. -->
-  <footer class="site-footer">
-    <p>Student prototype for BSAD 281 at St. Francis Xavier University. Not a real company — all data is fictional.</p>
-  </footer>
+  <footer class="site-footer">Student prototype for BSAD 281 at St. Francis Xavier University. Not a real company; plant and sitter data is fictional.</footer>
 
-  <!-- Scripts load in this order: data first, then the code that uses it. -->
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>

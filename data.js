@@ -1,26 +1,23 @@
 // ============================================================
-// data.js — ALL the fake data for your prototype lives here.
-//
-// There is no database. Everything below is made up, and that is
-// on purpose: never put real people's names, emails, phone numbers
-// or addresses in this file.
-//
-// To change what appears on the Explore page, edit LISTINGS.
-// Each item is one card. Keep the same fields (id, name, category,
-// description) or ask Copilot to add new ones everywhere they're needed.
+// data.js — fictional starter content for the student prototype.
+// Plant changes are saved in this browser, not to a real account.
 // ============================================================
 
 const STARTUP = {
-  name: "YourStartup",
-  tagline: "One sentence that says what your startup does.",
-  pitch: "Who is your customer, what problem do they have, and why is your solution better than what they use today?"
+  name: "Tend",
+  tagline: "A calmer way to care for your plants.",
+  pitch: "Tend keeps your plant collection organized, puts the most urgent watering first, and helps you plan care when you are away."
 };
 
-const LISTINGS = [
-  { id: 1, name: "Sample listing A", category: "Category 1", description: "A short description of this item." },
-  { id: 2, name: "Sample listing B", category: "Category 2", description: "A short description of this item." },
-  { id: 3, name: "Sample listing C", category: "Category 1", description: "A short description of this item." },
-  { id: 4, name: "Sample listing D", category: "Category 3", description: "A short description of this item." },
-  { id: 5, name: "Sample listing E", category: "Category 2", description: "A short description of this item." },
-  { id: 6, name: "Sample listing F", category: "Category 3", description: "A short description of this item." }
+const STARTER_PLANTS = [
+  { id: "plant-1", name: "Monstera", location: "Living room", interval: 7, lastWatered: "2026-10-25" },
+  { id: "plant-2", name: "Snake plant", location: "Bedroom", interval: 21, lastWatered: "2026-10-20" },
+  { id: "plant-3", name: "Golden pothos", location: "Kitchen", interval: 9, lastWatered: "2026-10-28" },
+  { id: "plant-4", name: "Peace lily", location: "Desk", interval: 5, lastWatered: "2026-10-29" }
+];
+
+const SITTERS = [
+  { name: "Morgan R.", area: "Downtown", experience: "3 years caring for houseplants", rate: "$18 / visit" },
+  { name: "Sam K.", area: "North End", experience: "Tropical plants and succulents", rate: "$22 / visit" },
+  { name: "Alex T.", area: "Riverside", experience: "Weekend and holiday visits", rate: "$16 / visit" }
 ];
